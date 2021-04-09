@@ -15,7 +15,8 @@ function _initform() {
     input.channel = "Anno.Plugs.Trace";
     input.router = "Trace";
     input.method = "GetTraceByGlobalTraceId";
-    input.GId = args["TraceId"];
+    input.GId = args["GlobalTraceId"];
+    input.TraceId = args["TraceId"];
     bif.process(input, function (data) {
         rltData = data;
         //BuildTree(data.outputData);
@@ -73,7 +74,14 @@ function BuildTreeTable(dataTree) {
                 }, frozen: true
             },
             { display: '调用人编号', width: 100, name: 'Uname', type: "text", frozen: true },
-            { display: '目标服务', name: 'Target', id: 'TraceId2', width: 250, align: 'left' },
+            {
+                display: '系统日志', name: 'TraceId', id: 'TraceIdLog', width: 60
+                , render: function (rowdata, rowindex, value) {
+                    var url = "../syslog/index.html?TraceId=";
+                    return '<a style="color: #409EFF;" href="' + url + rowdata.TraceId + '">查看</a>';
+                }
+            },
+            { display: '目标服务', name: 'Target', id: 'TraceId2', width: 130, align: 'left' },
                 { display: '请求管道', width: 100, name: 'Askchannel', type: "text" },
                 { display: '请求路由', width: 100, name: 'Askrouter', type: "text" },
                 { display: '请求方法', width: 100, name: 'Askmethod', type: "text" },
@@ -81,7 +89,9 @@ function BuildTreeTable(dataTree) {
                 { display: '访问者IP', width: 200, name: 'Ip', type: "text" },
                 { display: '调用时间', width: 200, name: 'Timespan', type: "date" }
         ], width: '100%',
-            height: '99%',
+        height: '99%',
+        headerRowHeight: 36,
+        rowHeight:45,
             usePager:false,
             data: dataTree, alternatingRow: false, tree: {
                 columnId: 'TraceId',

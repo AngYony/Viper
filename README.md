@@ -1,20 +1,21 @@
-# Viper
+# 🎄Viper
     Viper 是一个基于Anno微服务引擎开发的项目
 
-![Dashboard](https://s1.ax1x.com/2020/09/26/0iRcIU.png)
+![Dashboard](https://z3.ax1x.com/2021/04/01/cE4QPS.png)
+![Dashboard](https://z3.ax1x.com/2021/04/01/cE58JO.png)
 
-##  [Java 实现 ](https://github.com/duyanming/anno.thrift-parent) : https://github.com/duyanming/anno.thrift-parent
+##  🎩[Java 实现 ](https://github.com/duyanming/anno.thrift-parent) : https://github.com/duyanming/anno.thrift-parent
 
-##  [在线演示地址](http://140.143.207.244) :http://140.143.207.244
+##  🔥[在线演示地址](http://140.143.207.244) :http://140.143.207.244
     账号：anno
     密码：123456
-# Anno 分布式开发框架
+# 🎃Anno 分布式开发框架
 
     Anno 是一个分布式开发框架，同时支持 .net core3.1 、.net frameworker4.6.1
 
-## 1、运行Viper
+## 🎯1、运行Viper
 
-### MySQL 数据库
+### 🔫MySQL 数据库
 
 ```xml
 运行数据库脚本创建数据库
@@ -57,7 +58,7 @@
     进入项目文件夹 Viper\ViperCenter\bin\Debug\netcoreapp3.1 
     运行命令 dotnet ViperCenter.dll
     看到下图 说明运行成功
-![第一步](https://s1.ax1x.com/2020/09/26/0iRxsI.png)
+![第一步](https://z3.ax1x.com/2021/04/01/cE4a5T.png)
 
 ```
 第二步：启动 ViperService
@@ -130,7 +131,7 @@
     进入项目文件夹 Viper\ViperService\bin\Debug\netcoreapp3.1 
     运行命令 dotnet ViperService.dll
     看到下图 说明 ViperService 成功运行 并且已经注册到 注册中心（ViperCenter）运行成功
-![第二步](https://s1.ax1x.com/2020/09/26/0iWuwV.png)
+![第二步](https://z3.ax1x.com/2021/04/01/cE5PZq.png)
 
 启动 Viper.GetWay
 
@@ -157,11 +158,25 @@
         "limitSize": 100
       }
     ],
-    "IpLimit": {
+    "DefaultIpLimit": {
       "timeSpan": 1,
-      "rps": 100,
-      "limitSize": 100
+      "rps": 200,
+      "limitSize": 200
     },
+    "IpLimits": [
+      {
+        "ipMatch": "0.0.0.1",
+        "timeSpan": 1,
+        "rps": 100,
+        "limitSize": 100
+      },
+      {
+        "ipMatch": "192.168.0.10 - 192.168.10.20",
+        "timeSpan": 1,
+        "rps": 100,
+        "limitSize": 100
+      }
+    ],
     "White": [
       "0.0.0.1",
       "192.168.1.2",
@@ -174,23 +189,24 @@
   }
 }
 
+
 ```
 
 
 
-![第三步](https://s1.ax1x.com/2020/07/30/anlo26.png)
+![第三步](https://z3.ax1x.com/2021/04/01/cE5gyj.png)
 
 ```
 调用链详情
 ```
 
-![第三步](https://s1.ax1x.com/2020/07/30/anlI8x.png)
+![第三步](https://z3.ax1x.com/2021/04/01/cE5fwq.png)
 
  第四步：集群路由信息
 
-![第三步](https://s1.ax1x.com/2020/07/30/anGPsK.png)
+![第三步](https://z3.ax1x.com/2021/04/01/cE5Hl4.png)
 
-   ![第三步](https://s1.ax1x.com/2020/07/30/anGNzq.png)
+   ![第三步](https://z3.ax1x.com/2021/04/01/cEIiXd.png)
 
 ```
 调试邮件接口成功
@@ -202,13 +218,13 @@
 
 第五步：服务性能监控
        
-![第四步](https://s1.ax1x.com/2020/09/26/0iRcIU.png)
+![第四步](https://z3.ax1x.com/2021/04/01/cE4QPS.png)
 
 
 
-# Anno EventBus
+# 👒Anno EventBus
     Eventbus Support  InMemory and Rabbitmq
-## 1、Server配置
+## ⛳1、Server配置
 
 ```c#
 	//指定EventHandler的 所在程序集
@@ -240,7 +256,7 @@
 
 ```
 
-## 2、EventData配置
+## ⚾2、EventData配置
 
 ```c#
 
@@ -257,7 +273,7 @@
 ```
 
 
-## 3、EventHandler配置
+## 🎳3、EventHandler配置
 
 ```c#
 	
@@ -306,9 +322,9 @@
 
  ```
 
-## 4、中间件
-### 4.1 缓存中间件
-#### Install-Package Anno.EngineData.Cache
+## 🐎4、中间件
+### 💥4.1 缓存中间件
+#### 💪Install-Package Anno.EngineData.Cache
 
 ```shell
 
@@ -345,8 +361,8 @@ namespace Anno.Plugs.CacheRateLimitService
 
  ```
 
- ### 4.2 限流中间件
-#### Install-Package Anno.EngineData.RateLimit
+ ### 🔰4.2 限流中间件
+#### 💄Install-Package Anno.EngineData.RateLimit
 
 ```shell
 
@@ -409,14 +425,33 @@ dotnet publish "E:\gitProject\Anno\DCS\AppCenter\AppCenter.csproj" -c Release -r
         "limitSize": 2--漏桶容量大小 做缓冲用
       }
     ],
-    "IpLimit": {--IP限流
+    "DefaultIpLimit": {--默认IP限流策略
       "timeSpan": 1,
       "rps": 20,
       "limitSize": 200
     },
-    "WhiteList": [--白名单
-      "192.168.1.1",
+	"IpLimits": [--IP限流策略（ipMatch参考IPAddressRange）
+      {
+        "ipMatch": "0.0.0.1",
+        "timeSpan": 1,
+        "rps": 100,
+        "limitSize": 100
+      },
+      {
+        "ipMatch": "192.168.0.10 - 192.168.10.20",
+        "timeSpan": 1,
+        "rps": 100,
+        "limitSize": 100
+      }
+    ],
+    "White": [--白名单
+      "0.0.0.1",
+      "192.168.1.2",
       "192.168.2.18"
+    ],
+    "Black": [--黑名单
+      "0.0.0.2",
+      "192.168.3.18"
     ]
   }
 }
